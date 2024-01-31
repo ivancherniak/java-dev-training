@@ -15,10 +15,15 @@ public class RecipesProviderImpl implements RecipesProvider {
     private static final String generalRecipeNamePart = "Recipe#";
     private static final String generalIngredientNamePart = "Ingredient#";
     private static final String defaultCookingTimeInMins = "120 minutes";
-    public static final String GRAMS_SUFFIX = " grams";
+    private static final String GRAMS_SUFFIX = " grams";
+    private static final List<Recipe> recipes = createRecipes();
 
     @Override
-    public List<Recipe> getRecipes() {
+    public List<Recipe> loadRecipes() {
+        return recipes;
+    }
+
+    private static List<Recipe> createRecipes() {
         List<Recipe> recipesToReturn = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
@@ -27,7 +32,7 @@ public class RecipesProviderImpl implements RecipesProvider {
         return recipesToReturn;
     }
 
-    private Recipe mockRecipe() {
+    private static Recipe mockRecipe() {
         Recipe recipe = new Recipe();
         int recipeId = getRandomInt();
         recipe.setId(recipeId);
@@ -43,7 +48,7 @@ public class RecipesProviderImpl implements RecipesProvider {
         return recipe;
     }
 
-    private Ingredient mockIngredient() {
+    private static Ingredient mockIngredient() {
         Ingredient ingredient = new Ingredient();
         int ingredientId = getRandomInt();
         ingredient.setId(ingredientId);
@@ -53,7 +58,7 @@ public class RecipesProviderImpl implements RecipesProvider {
         return ingredient;
     }
 
-    private int getRandomInt() {
+    private static int getRandomInt() {
         Random random = new Random();
         return random.nextInt(MIN_ID, MAX_ID);
     }

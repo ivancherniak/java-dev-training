@@ -5,8 +5,6 @@ import org.ivch.model.Recipe;
 import java.util.List;
 
 public interface RecipesProvider {
-
-    List<Recipe> getRecipes();
-
+    List<Recipe> loadRecipes();
 
 }
